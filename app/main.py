@@ -63,8 +63,7 @@ async def main() -> Dict[str, Any]:
 
 @app.get("/containers")
 async def get_containers() -> Dict[str, List[str]]:
-    containers: List[str] = list(
-        map(lambda cont: cont.short_id, docker_client.containers.list(limit=5)))
+    containers: List[str] = list(map(lambda cont: cont.short_id, docker_client.containers.list()))
     return {"status": const.StatusEnum.success, "data": containers}
 
 
